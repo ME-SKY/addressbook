@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<script src="js/jquery-2.2.4.min.js"></script>
+<link rel='stylesheet' href='bootstrap/css/bootstrap.min.css' type='text/css'>
+<script src ="bootstrap/js/bootstrap.min.js"></script>
+<script src = "my.js"></script>  <!-- Подключение файла скриптов -->
+</head>
+<body>
+<div class='allgen'>
+	
+</div>
+
+<script type="text/javascript">
+<!-- Скрипт для переключения бутстрап-вкладок -->
+$(document).ready(function(){ 
+  $("#myTab a").click(function(e){
+    e.preventDefault();
+    $(this).tab('show');
+  });
+  selectCity();<!--  Загрузка списка городов в  <select> -->
+  selectStreet(); <!-- Загрузка списка улиц -->
+  //selectStreetEdit();
+});
+</script>
+ 
+<ul id="myTab" class="nav nav-tabs"> <!-- Вкладки, где можно выбрать или посмотреть всех в справочнике(/редактировать/удалять), или добавить новую запись -->
+  <li class="active"><a href="#panel1">Добавление записи</a></li>
+  <li  onclick="showUsers()"><a href="#panel2">Все записи</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="panel1" class="tab-pane fade in active ">
+    <p>Создание новой записи:</p>
+	<form id="form1" class="form-horizontal" method="post" action="my.js"><!-- Форма для добавления новой записи -->
+		<div class="control-group">
+			<input type="text"  id="family" placeholder="Фамилия"></input>
+			<input type="text" id="firstname" placeholder="Имя"></input>
+			<input type="text" id="fathername" placeholder="Отчество"></input>
+		</div>
+		<br>
+		<div id="selecting" class="control-group">
+			<select id="city">
+			</select>
+			<select id="street" >
+				<option disabled>Улица</option>
+			</select>
+		</div>
+		<br>
+		<div class="control-group">
+			<input type="text"  id="birth" placeholder="Дата рождения"></input>
+		</div>
+		<br>
+		<div class="control-group">
+			<input type="text"  id="phone" placeholder="Номер телефона"></input>
+		</div>
+		<br>
+		<div class="controls">					
+			<input type="button" id="register" value="Создать запись"></input>
+		</div>
+		<br>
+	</form>
+	
+  </div>
+  <div id="panel2" class="tab-pane fade  ">
+	<h3>Список всех</h3>
+	
+    <div id="allusers"></div> <!-- Место, куда вставляются все записи -->
+  </div>
+</div>
+</body>
+</html>
